@@ -5,11 +5,15 @@
 - Git
 - Docker Desktop, Docker Engine with Compose, or an equivalent Docker setup
 
-## Start
+## Run Locally
 
 Fork the repository. When done, create pull request and send it over.
 
-From a clean clone:
+This is a self-contained development project. It uses standard PHP, Composer and Node Docker images. It does not need personal credentials, privileged access, the Docker socket or access to folders outside this repository.
+
+You can review `docker-compose.yml` and both Dockerfiles before running anything.
+
+From your clean clone:
 
 ```bash
 docker compose up --build
