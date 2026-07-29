@@ -7,6 +7,8 @@
 
 ## Start
 
+Fork the repository. When done, create pull request and send it over.
+
 From a clean clone:
 
 ```bash

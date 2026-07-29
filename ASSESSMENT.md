@@ -26,11 +26,8 @@ Ask the user a few questions, one at a time. Use the answers to recommend a casi
 
 ## Delivery
 
-Create a GitHub repository and invite:
+Fork this repository and create pull request when done.
 
-- `gl-johan`
-- `sztanga`
-
-Use clear commits showing how the solution developed.
+Use many clear commits showing how the solution developed.
 
 Update `README.md` with your approach and any unfinished work. Keep the existing setup, test and build instructions working.
