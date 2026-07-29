@@ -1,0 +1,160 @@
+{
+  "questions": [
+    {
+      "id": "experience",
+      "title": "How much experience do you have with online casinos?",
+      "options": [
+        {
+          "id": "new-player",
+          "label": "I am new to online casinos"
+        },
+        {
+          "id": "experienced-player",
+          "label": "I already know what I like"
+        }
+      ]
+    },
+    {
+      "id": "priority",
+      "title": "What matters most to you?",
+      "options": [
+        {
+          "id": "welcome-bonus",
+          "label": "A strong welcome bonus"
+        },
+        {
+          "id": "fast-payouts",
+          "label": "Fast payouts"
+        },
+        {
+          "id": "live-casino",
+          "label": "A good live casino"
+        }
+      ]
+    },
+    {
+      "id": "play-style",
+      "title": "What would you play most often?",
+      "options": [
+        {
+          "id": "slots",
+          "label": "Slots"
+        },
+        {
+          "id": "live-games",
+          "label": "Live dealer games"
+        },
+        {
+          "id": "sports-betting",
+          "label": "Sports betting"
+        }
+      ]
+    },
+    {
+      "id": "device",
+      "title": "Where will you usually play?",
+      "options": [
+        {
+          "id": "mobile",
+          "label": "On my phone"
+        },
+        {
+          "id": "desktop",
+          "label": "On a computer"
+        }
+      ]
+    }
+  ],
+  "casinos": [
+    {
+      "id": "north-star",
+      "name": "North Star Casino",
+      "description": "A simple choice for new players with a broad selection of slots.",
+      "features": [
+        "2,000+ games",
+        "Mobile app",
+        "24/7 support"
+      ],
+      "bonus": {
+        "title": "100% match up to $500",
+        "terms": "18+. New customers only. Minimum deposit and wagering requirements apply.",
+        "ctaLabel": "Claim bonus",
+        "ctaUrl": "https://example.com/north-star"
+      },
+      "matchingAnswers": [
+        "new-player",
+        "welcome-bonus",
+        "slots",
+        "mobile"
+      ]
+    },
+    {
+      "id": "harbour-bet",
+      "name": "Harbour Bet",
+      "description": "Fast withdrawals and a strong sportsbook for experienced players.",
+      "features": [
+        "Fast withdrawals",
+        "Same-game parlays",
+        "Live support"
+      ],
+      "bonus": {
+        "title": "Bet $20, get $100",
+        "terms": "18+. New customers only. Qualifying bet and wagering requirements apply.",
+        "ctaLabel": "Get offer",
+        "ctaUrl": "https://example.com/harbour-bet"
+      },
+      "matchingAnswers": [
+        "experienced-player",
+        "fast-payouts",
+        "sports-betting",
+        "desktop"
+      ]
+    },
+    {
+      "id": "lucky-lantern",
+      "name": "Lucky Lantern",
+      "description": "A mobile-first casino with live tables and a friendly welcome offer.",
+      "features": [
+        "Live dealer tables",
+        "Mobile-first design",
+        "Weekly rewards"
+      ],
+      "bonus": {
+        "title": "Up to $750 welcome package",
+        "terms": "18+. New customers only. Minimum deposit and wagering requirements apply.",
+        "ctaLabel": "View bonus",
+        "ctaUrl": "https://example.com/lucky-lantern"
+      },
+      "matchingAnswers": [
+        "new-player",
+        "welcome-bonus",
+        "live-casino",
+        "live-games",
+        "mobile"
+      ]
+    },
+    {
+      "id": "summit-play",
+      "name": "Summit Play",
+      "description": "A complete desktop casino focused on live games and quick payments.",
+      "features": [
+        "Premium live tables",
+        "Fast payments",
+        "Loyalty rewards"
+      ],
+      "bonus": {
+        "title": "50% match up to $1,000",
+        "terms": "18+. New customers only. Minimum deposit and wagering requirements apply.",
+        "ctaLabel": "Play now",
+        "ctaUrl": "https://example.com/summit-play"
+      },
+      "matchingAnswers": [
+        "experienced-player",
+        "fast-payouts",
+        "live-casino",
+        "live-games",
+        "desktop"
+      ]
+    }
+  ]
+}

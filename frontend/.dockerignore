@@ -1,0 +1,6 @@
+.git
+.nuxt
+.output
+.pnpm-store
+coverage
+node_modules

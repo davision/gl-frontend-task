@@ -1,0 +1,40 @@
+name: gl-frontend-assessment
+
+services:
+  api:
+    build:
+      context: ./api
+    environment:
+      APP_ENV: dev
+      APP_SECRET: local-assessment-secret
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--output-document=-", "http://127.0.0.1:8080/api/health"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+    ports:
+      - "${API_PORT:-8080}:8080"
+    volumes:
+      - ./api:/app
+      - api_vendor:/app/vendor
+
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      CI: "true"
+      NUXT_API_BASE_URL: http://api:8080
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+      - frontend_nuxt:/app/.nuxt
+
+volumes:
+  api_vendor:
+  frontend_node_modules:
+  frontend_nuxt:

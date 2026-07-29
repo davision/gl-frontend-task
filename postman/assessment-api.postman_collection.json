@@ -1,0 +1,92 @@
+{
+  "info": {
+    "_postman_id": "6f37d954-2083-4f64-b707-9579c59d0303",
+    "name": "GL Frontend Assessment API",
+    "description": "Requests for the standalone frontend assessment API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        },
+        "description": "Checks whether the Symfony API is ready."
+      },
+      "response": [
+        {
+          "name": "Healthy",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"status\": \"ok\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Assessment Data",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/assessment",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "assessment"]
+        },
+        "description": "Returns the questions, casino offers and matching values used by the assessment."
+      },
+      "response": [
+        {
+          "name": "Assessment Data",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/assessment",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "assessment"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"questions\": [\n    {\n      \"id\": \"experience\",\n      \"title\": \"How much experience do you have with online casinos?\",\n      \"options\": [\n        { \"id\": \"new-player\", \"label\": \"I am new to online casinos\" }\n      ]\n    }\n  ],\n  \"casinos\": [\n    {\n      \"id\": \"north-star\",\n      \"name\": \"North Star Casino\",\n      \"matchingAnswers\": [\"new-player\", \"welcome-bonus\", \"mobile\"]\n    }\n  ]\n}"
+        }
+      ]
+    }
+  ]
+}

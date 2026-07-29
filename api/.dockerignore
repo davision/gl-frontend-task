@@ -1,0 +1,5 @@
+.git
+.phpunit.cache
+config/reference.php
+var
+vendor
