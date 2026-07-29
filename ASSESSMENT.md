@@ -2,7 +2,11 @@
 
 ## Task
 
-Build a casino finder inspired by [PlayUSA Casino Finder](https://www.playusa.com/casino-finder/). It must match the style of [PromoGuy.us](https://promoguy.us/) website.
+Build a casino finder inspired by:
+
+- [PlayUSA Casino Finder](https://www.playusa.com/casino-finder/)
+- [PromoGuy.us](https://promoguy.us/)
+- [Figma Design](https://www.figma.com/design/69ok8mpkAhNumJCctF1MFx/Bonuses-for-test?node-id=0-1&node-type=canvas&t=EThc4g3SIwSKAbGQ-0)
 
 Ask the user a few questions, one at a time. Use the answers to recommend a casino and bonus.
 
