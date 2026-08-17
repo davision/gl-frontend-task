@@ -1,9 +1,8 @@
 <script setup>
 const { data, status, error } = await useFetch("/api/assessment");
 
-const questions = computed(() => data.value?.questions ?? []);
-const currentQuestion = ref(questions.value[0]);
-const answers = ref({});
+const { questions, currentQuestion, answers, showResults, recommendation } =
+  useCasinoFinder(data);
 </script>
 
 <template>
@@ -13,17 +12,28 @@ const answers = ref({});
       <div v-else-if="error">Something went wrong: {{ error.message }}</div>
 
       <div v-else class="flex flex-col items-center">
+        <h1 class="text-center text-4xl! font-bold">Casino Finder</h1>
+        <div class="w-36 h-px bg-(--brass) my-16"></div>
+
         <QuestionNumbers
           :questions="questions"
           :current-question="currentQuestion"
         />
 
-        <div class="w-36 h-px bg-(--brass) mt-16"></div>
-        <div class="text-center font-bold text-2xl mt-16 mb-8">
-          {{ currentQuestion.title }}
-        </div>
+        <template v-if="!showResults && currentQuestion">
+          <div class="text-center font-bold text-2xl mt-16 mb-8">
+            {{ currentQuestion.title }}
+          </div>
 
-        <QuestionOptions :options="currentQuestion.options" />
+          <QuestionOptions
+            :key="currentQuestion.id"
+            :name="currentQuestion.id"
+            :options="currentQuestion.options"
+            v-model="answers[currentQuestion.id]"
+          />
+        </template>
+
+        <template v-else-if="recommendation"> </template>
       </div>
     </section>
   </main>
