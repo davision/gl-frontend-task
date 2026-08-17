@@ -1,5 +1,6 @@
 export function useCasinoFinder(payload) {
   const questions = computed(() => payload.value?.questions ?? []);
+  const casinos = computed(() => payload.value?.casinos ?? []);
 
   const currentIndex = ref(0);
   const answers = ref({});
@@ -8,14 +9,12 @@ export function useCasinoFinder(payload) {
   const currentQuestion = computed(
     () => questions.value[currentIndex.value] ?? null,
   );
-
   const currentAnswer = computed(() =>
     currentQuestion.value ? answers.value[currentQuestion.value.id] : undefined,
   );
 
-  const recommendation = computed(() => []);
-
   const canGoNext = computed(() => Boolean(currentAnswer.value));
+  const isFirst = computed(() => currentIndex.value === 0);
   const isLast = computed(
     () => currentIndex.value === questions.value.length - 1,
   );
@@ -27,16 +26,61 @@ export function useCasinoFinder(payload) {
       return;
     }
 
-    currentIndex.value += 1;
+    currentIndex.value++;
   }
+
+  function goBack() {
+    if (showResults.value) {
+      showResults.value = false;
+      return;
+    }
+
+    if (isFirst.value) {
+      return;
+    }
+
+    currentIndex.value--;
+  }
+
+  const isComplete = computed(
+    () =>
+      questions.value.length > 0 &&
+      questions.value.every((question) => Boolean(answers.value[question.id])),
+  );
+
+  function scoreCasino(casino, selectedAnswerIds) {
+    const selected = new Set(selectedAnswerIds.filter(Boolean));
+
+    return casino.matchingAnswers.filter((id) => selected.has(id)).length;
+  }
+
+  function recommendCasinos(casinos, selectedAnswerIds) {
+    return casinos
+      .map((casino) => ({
+        ...casino,
+        score: scoreCasino(casino, selectedAnswerIds),
+      }))
+      .sort((a, b) => b.score - a.score);
+  }
+
+  const rankedCasinos = computed(() => {
+    return recommendCasinos(casinos.value, Object.values(answers.value));
+  });
+
+  const recommendation = computed(() => {
+    return isComplete.value ? (rankedCasinos.value[0] ?? null) : null;
+  });
 
   return {
     questions,
     currentIndex,
     currentQuestion,
     answers,
+    isFirst,
+    isLast,
     showResults,
     recommendation,
     goNext,
+    goBack,
   };
 }

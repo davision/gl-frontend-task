@@ -13,11 +13,11 @@ const selected = defineModel<string>({ default: "" });
 </script>
 
 <template>
-  <div class="flex flex-wrap justify-center items-center gap-4">
+  <div class="flex flex-col md:flex-row justify-center items-center gap-4">
     <label
       v-for="option in options"
       :key="option.id"
-      class="flex items-center gap-3 cursor-pointer px-4 py-2 rounded-md has-checked:ring-(--brass) has-checked:ring-2 hover:bg-yellow-500/20 transition-colors"
+      class="flex items-center gap-3 cursor-pointer px-4 py-2 rounded-md has-checked:ring-(--brass) has-checked:ring-2 hover:bg-yellow-500/20"
     >
       <input
         type="radio"
