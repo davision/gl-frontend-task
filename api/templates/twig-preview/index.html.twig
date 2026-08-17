@@ -5,13 +5,11 @@
 {% block body %}
     <main class="page" aria-labelledby="page-title">
         <section class="page-content">
-            <h1 id="page-title">
-                Build the
-                <span>Twig bonus cards.</span>
-            </h1>
-            <p>
-                Read <code>ASSESSMENT.md</code> and replace this page with your solution.
-            </p>
+            <div class="casino-grid">
+                {% for casino in casinos %}
+                    {% include 'twig-preview/_casino_card.html.twig' with { casino: casino } %}
+                {% endfor %}
+            </div>
         </section>
     </main>
 {% endblock %}

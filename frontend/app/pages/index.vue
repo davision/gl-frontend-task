@@ -63,7 +63,7 @@ const {
                 </div>
               </Transition>
 
-              <div class="mt-12 flex items-center gap-4 justify-center p-4">
+              <div class="mt-12 flex items-center gap-4 justify-center p-6">
                 <button
                   v-if="!isFirst"
                   type="button"

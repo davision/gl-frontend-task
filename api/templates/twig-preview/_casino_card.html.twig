@@ -1,0 +1,16 @@
+<article class="casino-card">
+    <div class="casino-card__header">
+        <h2>{{ casino.name }}</h2>
+        <p>{{ casino.description }}</p>
+    </div>
+    <ul class="casino-card__features">
+        {% for feature in casino.features %}
+            <li>{{ feature }}</li>
+        {% endfor %}
+    </ul>
+    <div class="casino-card__bonus">{{ casino.bonus.title }}</div>
+    <p class="casino-card__terms">{{ casino.bonus.terms }}</p>
+    <a class="casino-card__cta" href="{{ casino.bonus.ctaUrl }}">
+        {{ casino.bonus.ctaLabel }}
+    </a>
+</article>
