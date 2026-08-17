@@ -1,8 +1,14 @@
 <script setup>
 const { data, status, error } = await useFetch("/api/assessment");
 
-const { questions, currentQuestion, answers, showResults, recommendation } =
-  useCasinoFinder(data);
+const {
+  questions,
+  currentQuestion,
+  answers,
+  showResults,
+  recommendation,
+  goNext,
+} = useCasinoFinder(data);
 </script>
 
 <template>
@@ -30,6 +36,7 @@ const { questions, currentQuestion, answers, showResults, recommendation } =
             :name="currentQuestion.id"
             :options="currentQuestion.options"
             v-model="answers[currentQuestion.id]"
+            @update:model-value="goNext"
           />
         </template>
 
