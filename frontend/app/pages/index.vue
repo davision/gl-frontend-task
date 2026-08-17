@@ -8,8 +8,10 @@ const {
   showResults,
   recommendation,
   goNext,
+  canGoNext,
   isFirst,
   goBack,
+  startOver,
 } = useCasinoFinder(data);
 </script>
 
@@ -23,15 +25,16 @@ const {
         <h1 class="text-center text-4xl! font-bold">Casino Finder</h1>
         <div class="w-36 h-px bg-(--brass) my-16"></div>
 
-        <QuestionNumbers
-          :questions="questions"
-          :current-question="currentQuestion"
-        />
         <template v-if="!showResults && currentQuestion">
+          <QuestionNumbers
+            :questions="questions"
+            :current-question="currentQuestion"
+          />
+
           <Transition name="reveal" mode="out-in">
             <div
               :key="currentQuestion.id"
-              class="flex w-full flex-col items-center min-h-68"
+              class="flex w-full flex-col items-center"
             >
               <div class="text-center font-bold text-2xl mt-16 mb-8">
                 {{ currentQuestion.title }}
@@ -41,21 +44,49 @@ const {
                 :name="currentQuestion.id"
                 :options="currentQuestion.options"
                 v-model="answers[currentQuestion.id]"
-                @update:model-value="goNext"
               />
-
-              <button
-                v-if="!isFirst"
-                type="button"
-                class="hover:bg-white/10 text-white/60 cursor-pointer px-4 py-2 rounded-md border border-white/20 disabled:opacity-40 mt-16"
-                @click="goBack"
-              >
-                Go back
-              </button>
             </div>
           </Transition>
+
+          <div class="mt-12 flex items-center gap-4">
+            <button
+              v-if="!isFirst"
+              type="button"
+              class="px-4 py-2 flex items-center gap-2 text-white/60 cursor-pointer rounded-md border border-white/20 disabled:opacity-40"
+              :disabled="isFirst"
+              @click="goBack"
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              class="cursor-pointer px-4 py-2 rounded-md bg-(--brass) text-yellow-900 font-bold disabled:opacity-40"
+              :disabled="!canGoNext"
+              @click="goNext"
+            >
+              {{ isLast ? "See recommendation" : "Next" }}
+            </button>
+          </div>
         </template>
-        <CasinoCard v-else-if="recommendation" :casino="recommendation" />
+
+        <template v-else-if="recommendation">
+          <h3 class="text-center text-3xl! font-bold mb-12">
+            Based on your answers, we recommend you to try:
+          </h3>
+
+          <CasinoCard :casino="recommendation" />
+
+          <div class="mt-8">
+            <button
+              type="button"
+              class="cursor-pointer px-4 py-2 flex items-center gap-2 rounded-md bg-(--brass) text-yellow-900 font-bold disabled:opacity-40"
+              @click="startOver"
+            >
+              <ArrowBack class="w-4 h-4" />
+              Start over
+            </button>
+          </div>
+        </template>
       </div>
     </section>
   </main>

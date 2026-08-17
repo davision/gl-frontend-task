@@ -42,6 +42,12 @@ export function useCasinoFinder(payload) {
     currentIndex.value--;
   }
 
+  function startOver() {
+    showResults.value = false;
+    answers.value = {};
+    currentIndex.value = 0;
+  }
+
   const isComplete = computed(
     () =>
       questions.value.length > 0 &&
@@ -61,11 +67,13 @@ export function useCasinoFinder(payload) {
     currentIndex,
     currentQuestion,
     answers,
+    canGoNext,
     isFirst,
     isLast,
     showResults,
     recommendation,
     goNext,
     goBack,
+    startOver,
   };
 }
