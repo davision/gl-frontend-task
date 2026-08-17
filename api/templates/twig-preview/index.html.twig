@@ -2,9 +2,11 @@
 
 {% block title %}Twig Preview{% endblock %}
 
+
 {% block body %}
     <main class="page" aria-labelledby="page-title">
         <section class="page-content">
+
             <div class="casino-grid">
                 {% for casino in casinos %}
                     {% include 'twig-preview/_casino_card.html.twig' with { casino: casino } %}
@@ -13,3 +15,4 @@
         </section>
     </main>
 {% endblock %}
+

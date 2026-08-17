@@ -23,7 +23,10 @@ const {
       <div v-else-if="error">Something went wrong: {{ error.message }}</div>
 
       <div v-else class="flex flex-col items-center">
-        <h1 class="text-center text-4xl! font-bold text-(--brass)">
+        <h1
+          id="page-title"
+          class="text-center text-4xl! font-bold text-(--brass)"
+        >
           Online Casino Finder
         </h1>
         <div
@@ -85,7 +88,7 @@ const {
             </div>
 
             <div
-              v-else="recommendation"
+              v-else-if="recommendation"
               class="flex flex-col items-center w-full p-6"
             >
               <h3 class="text-center text-3xl! font-bold mb-12">

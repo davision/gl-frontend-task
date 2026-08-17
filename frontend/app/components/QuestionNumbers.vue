@@ -29,7 +29,7 @@ defineProps<{ questions: Question[]; currentQuestion: Question }>();
       >
         {{ (index as number) + 1 }}
       </div>
-      <div class="text-center text-sm md:ont-bold capitalize">
+      <div class="text-center text-sm md:font-bold capitalize">
         {{ question.id }}
       </div>
     </li>

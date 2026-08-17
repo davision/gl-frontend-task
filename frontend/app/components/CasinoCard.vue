@@ -51,7 +51,7 @@ defineProps<{
     </div>
 
     <a
-      href="{{ casino.bonus.ctaUrl }}"
+      :href="casino.bonus.ctaUrl"
       class="block text-white font-bold text-center text-lg bg-emerald-400 rounded-md p-2"
     >
       {{ casino.bonus.ctaLabel }}

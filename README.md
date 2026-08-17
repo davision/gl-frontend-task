@@ -82,3 +82,12 @@ The sample data is stored in `api/resources/data/assessment.json`. It includes q
   "casinos": []
 }
 ```
+
+## Approach
+
+The Nuxt app loads assessment data from `GET /api/assessment` (proxied by Nitro). `useCasinoFinder` composable keeps the current question and answers. Each question binds options with `v-model`. Casinos are ranked by how many selected option IDs appear in `matchingAnswers`; the highest score is shown as a `CasinoCard`.
+
+The Symfony `/twig-preview` page renders every casino with a reusable Twig partial (`_casino_card.html.twig`) and `twig-preview.css`. No Vue on that page.
+
+## Unfinished work
+- Bonus cards are close to the Vue layout, not a pixel-perfect Figma match
