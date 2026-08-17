@@ -13,6 +13,7 @@ const {
   isFirst,
   goBack,
   startOver,
+  isEmpty,
 } = useCasinoFinder(data);
 </script>
 
@@ -21,6 +22,9 @@ const {
     <section class="page-content mx-auto">
       <div v-if="status === 'pending'">Loading...</div>
       <div v-else-if="error">Something went wrong: {{ error.message }}</div>
+      <div v-else-if="isEmpty" class="text-center text-(--muted)">
+        No questions or casinos are available right now.
+      </div>
 
       <div v-else class="flex flex-col items-center">
         <h1

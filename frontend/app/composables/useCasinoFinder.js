@@ -48,9 +48,13 @@ export function useCasinoFinder(payload) {
     currentIndex.value = 0;
   }
 
+  const isEmpty = computed(
+    () => questions.value.length === 0 || casinos.value.length === 0,
+  );
+
   const isComplete = computed(
     () =>
-      questions.value.length > 0 &&
+      !isEmpty.value &&
       questions.value.every((question) => Boolean(answers.value[question.id])),
   );
 
@@ -70,6 +74,7 @@ export function useCasinoFinder(payload) {
     canGoNext,
     isFirst,
     isLast,
+    isEmpty,
     showResults,
     recommendation,
     goNext,
