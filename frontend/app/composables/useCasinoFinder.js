@@ -21,15 +21,13 @@ export function useCasinoFinder(payload) {
   );
 
   function goNext() {
-    setTimeout(() => {
-      if (!canGoNext.value) return;
-      if (isLast.value) {
-        showResults.value = true;
-        return;
-      }
+    if (!canGoNext.value) return;
+    if (isLast.value) {
+      showResults.value = true;
+      return;
+    }
 
-      currentIndex.value += 1;
-    }, 200);
+    currentIndex.value += 1;
   }
 
   return {

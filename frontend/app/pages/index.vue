@@ -25,21 +25,25 @@ const {
           :questions="questions"
           :current-question="currentQuestion"
         />
-
         <template v-if="!showResults && currentQuestion">
-          <div class="text-center font-bold text-2xl mt-16 mb-8">
-            {{ currentQuestion.title }}
-          </div>
+          <Transition name="reveal" mode="out-in">
+            <div
+              :key="currentQuestion.id"
+              class="flex w-full flex-col items-center"
+            >
+              <div class="text-center font-bold text-2xl mt-16 mb-8">
+                {{ currentQuestion.title }}
+              </div>
 
-          <QuestionOptions
-            :key="currentQuestion.id"
-            :name="currentQuestion.id"
-            :options="currentQuestion.options"
-            v-model="answers[currentQuestion.id]"
-            @update:model-value="goNext"
-          />
+              <QuestionOptions
+                :name="currentQuestion.id"
+                :options="currentQuestion.options"
+                v-model="answers[currentQuestion.id]"
+                @update:model-value="goNext"
+              />
+            </div>
+          </Transition>
         </template>
-
         <template v-else-if="recommendation"> </template>
       </div>
     </section>
