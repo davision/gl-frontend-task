@@ -48,21 +48,6 @@ export function useCasinoFinder(payload) {
       questions.value.every((question) => Boolean(answers.value[question.id])),
   );
 
-  function scoreCasino(casino, selectedAnswerIds) {
-    const selected = new Set(selectedAnswerIds.filter(Boolean));
-
-    return casino.matchingAnswers.filter((id) => selected.has(id)).length;
-  }
-
-  function recommendCasinos(casinos, selectedAnswerIds) {
-    return casinos
-      .map((casino) => ({
-        ...casino,
-        score: scoreCasino(casino, selectedAnswerIds),
-      }))
-      .sort((a, b) => b.score - a.score);
-  }
-
   const rankedCasinos = computed(() => {
     return recommendCasinos(casinos.value, Object.values(answers.value));
   });
